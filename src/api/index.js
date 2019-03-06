@@ -29,3 +29,8 @@ export const fetchCurrentUser = () => {
     return res.data;
   });
 };
+
+export const logout = () => {
+  delete localStorage.session;
+  return Promise.resolve();
+};
