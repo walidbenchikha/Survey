@@ -47,7 +47,7 @@ class OverviewSurveyPage extends React.Component {
         <div className="row">
           <div className="col-md-6">
             <ul className="list-unstyled card">
-              <li className="clearfix">
+              {/* <li className="clearfix">
                 <div className="title">
                   Create At
                 </div>
@@ -82,7 +82,7 @@ class OverviewSurveyPage extends React.Component {
                         updateSurvey(survey);
                       }} />
                 </div>
-              </li>
+              </li> */}
               <li className="clearfix">
                 <div className="title">
                   Link of The Survey
@@ -94,7 +94,7 @@ class OverviewSurveyPage extends React.Component {
             </ul>
           </div>
 
-          <div className="col-md-6">
+          {/* <div className="col-md-6">
             <ul className="list-unstyled card">
               <li className="clearfix">
                 <div className="title">
@@ -121,9 +121,9 @@ class OverviewSurveyPage extends React.Component {
                 </div>
               </li>
             </ul>
-          </div>
+          </div> */}
         </div>
-        <div className="row">
+        {/* <div className="row">
           <footer className="col-md-12">
             <Button
                 className="btn btn-sm btn-danger"
@@ -131,7 +131,7 @@ class OverviewSurveyPage extends React.Component {
                 deleteSurvey(survey);
               }}>Delete Survey</Button>
           </footer>
-        </div>
+        </div> */}
       </div>
     );
   }
@@ -141,7 +141,7 @@ const mapStateToProps = (state, { params, router }) => {
   return {
     surveyId: params.surveyId,
     survey: assembleSurvey(getSurvey(state.edit_survey)),
-    results: state.data.results,
+    results: undefined,
     isDeleteSuccess: state.edit_survey.deleteSurvey.isSuccess,
     push: router.push
   };

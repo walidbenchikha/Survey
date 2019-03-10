@@ -8,9 +8,12 @@ export const fetchSurveysRequest = user => dispatch => {
   });
 
   return api.fetchUserSurveys(user).then(res => {
+    console.log("----------");
+    console.log("----------");
+    console.log(res);
     dispatch({
       type: 'FETCH_SURVEYS_REQUEST_SUCCESS',
-      payload: res
+      payload: res.data
     });
   }).catch(err => {
     dispatch({

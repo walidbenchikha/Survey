@@ -86,7 +86,7 @@ export default combineReducers({
   reportFilter: reportFilter
 });
 
-export const canReportTypes = [QuestionTypes.CHECKBOXES, QuestionTypes.DROPDOWN, QuestionTypes.MULTI_CHOICE];
+export const canReportTypes = [QuestionTypes.MULTIPLECHOICE];
 
 export const getModal = (state) => state.gridModal;
 export const getColumns = (state) => state.survey.questions.map(question => {
@@ -97,19 +97,10 @@ export const getColumns = (state) => state.survey.questions.map(question => {
 });
 
 const resultToText = {
-  [QuestionTypes.CHECKBOXES]: (question, result) => {
-    return question.options.filter(option => result[option._id]).map(option => option.content).join(", ");
-  },
-  [QuestionTypes.MUTLI_LINE_TEXT]: (question, result) => {
+  [QuestionTypes.OPENEDED]: (question, result) => {
     return result;
   },
-  [QuestionTypes.SINGLE_LINE_TEXT]: (question, result) => {
-    return result;
-  },
-  [QuestionTypes.DROPDOWN]: (question, result) => {
-    return question.options.find(option => option._id === result).content;
-  },
-  [QuestionTypes.MULTI_CHOICE]: (question, result) => {
+  [QuestionTypes.MULTIPLECHOICE]: (question, result) => {
     return question.options.find(option => option._id === result).content;
   }
 };

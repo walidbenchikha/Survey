@@ -38,19 +38,24 @@ export const logout = () => {
 };
 
 export const fetchUserSurveys = (user) => {
-  return fetcher.get(`/user/surveys`).then(res => res.data);
+  return fetcher.get(`/api/survey/getAllMySurveys`).then(res => res.data)
+  
 };
 
 export const createSurvey = (userId, initSurvey) => {
   return fetcher.post(`/user/surveys`, initSurvey).then(res => res.data);
 };
 
+export const uploadSurvey = (survey) => {
+  return fetcher.post(`/api/survey`, survey).then(res => res.data);
+};
+
 export const fetchSurvey = (surveyId) => {
-  return fetcher.get(`/surveys/${surveyId}`).then(res => res.data);
+  return fetcher.get(`/api/survey/${surveyId}`).then(res => res.data);
 };
 
 export const updateSurvey = (survey) => {
-  return fetcher.put(`/surveys/${survey.id}`, survey).then(res => res.data);
+  return fetcher.put(`/api/survey/${survey.id}`, survey).then(res => res.data);
 };
 
 export const deleteSurvey = surveyId => {};

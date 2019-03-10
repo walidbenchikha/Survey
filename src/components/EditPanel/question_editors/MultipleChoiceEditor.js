@@ -9,13 +9,13 @@ class MultipleChoiceEditor extends Component {
   }
 
   update() {
-    this.props.updateQuestion(this.props._id, {
+    this.props.updateQuestion(this.props.id, {
       title: this.title_node.value
     });
   }
 
   render() {
-    const { _id, title, options } = this.props;
+    const { id, title, options } = this.props;
     return (
         <div>
           <form>
@@ -31,15 +31,15 @@ class MultipleChoiceEditor extends Component {
               {options.map((option, index) => {
                 return <OptionField
                     canRemove={index !== 0}
-                    key={option._id}
+                    key={option.id}
                     content={option.content}
-                    ref={(input) => { this.inputs[option._id] = input }}
+                    ref={(input) => { this.inputs[option.id] = input }}
                     onChange={(e) => {
-                      this.props.updateQuestion(_id, {
+                      this.props.updateQuestion(id, {
                         options: [
                           ...options.slice(0, index),
                           {
-                            _id: option._id,
+                            id: option.id,
                             content: e.target.value
                           },
                           ...options.slice(index + 1)
@@ -47,15 +47,15 @@ class MultipleChoiceEditor extends Component {
                       })
                     }}
                     onClone={() => {
-                      this.props.updateQuestion(_id, {
+                      this.props.updateQuestion(id, {
                         options: [
                           ...options.slice(0, index + 1),
-                          {_id: newId(), content: option.content},
+                          {id: newId(), content: option.content},
                           ...options.slice(index + 1)]
                       })
                     }}
                     onRemove={() => {
-                      this.props.updateQuestion(_id, {
+                      this.props.updateQuestion(id, {
                         options: [
                           ...options.slice(0, index),
                           ...options.slice(index + 1)]

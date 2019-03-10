@@ -7,7 +7,8 @@ import Papa from 'papaparse';
 // import { createSurveyRequest, resetCreateSurvey } from '../actions/surveys';
 // import { Path } from '../routes';
 import { Button, Modal } from 'react-bootstrap';
-import Axios from 'axios';
+import * as api from '../api';
+import initSurvey from '../constants/InitSurvey';
 
 class UploadSurvey extends React.Component {
 //   componentDidUpdate(prevProps, prevState) {
@@ -22,6 +23,7 @@ class UploadSurvey extends React.Component {
 
         this.handleShow = this.handleShow.bind(this);
         this.handleClose = this.handleClose.bind(this);
+        this.handleUpload = this.handleUpload.bind(this);
 
         this.state = {
             data: undefined,
@@ -73,7 +75,43 @@ class UploadSurvey extends React.Component {
         }.bind(this));
     }
 
-    handleSave = () => {
+    handleUpload = () => {
+        if (this.state.data){
+            //api.uploadSurvey(undefined, initSurvey)
+            //.then(res => {
+            //console.log(res)
+            var res = {}
+            res.title = "New Survey"
+            var questions = [];
+            this.state.data.map(function(item,i){
+                
+                if (item[1]=='mc'){
+                    var question = {}
+                    question.type = 'MULTIPLECHOICE';
+                    question.title = item[0];
+                    var options =[];
+                    options.push({"content":item[2]});
+                    options.push({"content":item[3]});
+                    options.push({"content":item[4]});
+                    options.push({"content":item[5]});
+                    question.options=options;
+                    questions.push(question);
+                } else if (item[1]=='oe'){
+                    var question = {}
+                    question.type = 'OPENENDED';
+                    question.title = item[0];
+                    questions.push(question);
+                }
+                
+            })
+            res.questions = questions;
+            api.uploadSurvey(res);
+            //})
+            //.catch(err => console.log(err));
+            
+            
+            this.setState({ show: false });
+        }
         
     }
 
@@ -106,8 +144,8 @@ class UploadSurvey extends React.Component {
                 <Button variant="secondary" onClick={this.handleClose}>
                 Close
                 </Button>
-                <Button variant="primary" onClick={this.handleClose}>
-                Save Changes
+                <Button variant="primary" onClick={this.handleUpload}>
+                Upload File
                 </Button>
             </Modal.Footer>
             </Modal>

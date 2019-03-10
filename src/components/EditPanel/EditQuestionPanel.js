@@ -6,20 +6,11 @@ import TextEditor from './question_editors/TextEditor';
 import './EditQuestionPanel.css';
 
 const questionEditorMap = {
-  [QuestionTypes.CHECKBOXES]: (question, updateQuestion) => {
+  [QuestionTypes.MULTIPLECHOICE]: (question, updateQuestion) => {
     return <MultipleChoiceEditor {...question} updateQuestion={updateQuestion}/>
   },
-  [QuestionTypes.DROPDOWN]: (question, updateQuestion) => {
-    return <MultipleChoiceEditor {...question} updateQuestion={updateQuestion}/>
-  },
-  [QuestionTypes.MULTI_CHOICE]: (question, updateQuestion) => {
-    return <MultipleChoiceEditor {...question} updateQuestion={updateQuestion}/>
-  },
-  [QuestionTypes.SINGLE_LINE_TEXT]: (question, updateQuestion) => {
+  [QuestionTypes.OPENENDED]: (question, updateQuestion) => {
     return <TextEditor {...question} updateQuestion={updateQuestion} />
-  },
-  [QuestionTypes.MUTLI_LINE_TEXT]: (question, updateQuestion) => {
-    return <TextEditor {...question} updateQuestion={updateQuestion}/>
   }
 };
 

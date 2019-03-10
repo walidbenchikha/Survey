@@ -10,7 +10,7 @@ export const normalizeSurvey = (survey) => {
   });
   let question_order = survey.questions.map(question => question._id);
   return {
-    id: survey.id,
+    id: survey._id,
     title: survey.title,
     subTitle: survey.subTitle,
     questions: questions,

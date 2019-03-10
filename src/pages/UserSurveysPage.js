@@ -7,8 +7,13 @@ class UserSurveysPage extends React.Component {
   render() {
     return (
         <div className="container">
-        <NewSurvey />
-        <UploadSurvey />
+        <div className="row">
+        <ul className="list-unstyled">
+        <li className="col-md-3"><NewSurvey /> </li>
+        <li className="col-md-3"><UploadSurvey /> </li>
+        
+        </ul>
+        </div>
           <SurveyList/>
         </div>
     );

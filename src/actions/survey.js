@@ -10,7 +10,7 @@ export const fetchSurvey = surveyId => dispatch => {
   api.fetchSurvey(surveyId).then(res => {
     dispatch({
       type: Survey.FETCH_SURVEY_REQUEST_SUCCESS,
-      payload: res
+      payload: res.data
     });
   }).catch(err => {
     dispatch({
