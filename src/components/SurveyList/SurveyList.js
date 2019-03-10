@@ -9,7 +9,7 @@ class SurveyList extends React.Component {
       <div className="SurveyList row">
         <ul className="list-unstyled">
           {surveys.map(survey => {
-              return <li key={survey.id} className="col-md-3"><SurveyItem survey={survey}/></li>
+              return <li key={survey._id} className="col-md-3"><SurveyItem survey={survey}/></li>
           })}
         </ul>
       </div>

@@ -37,7 +37,7 @@ class ResultGrid extends React.Component {
                 </th>
                 <th className="index">#</th>
                 {columns.map(col => {
-                  return <th key={col.id}>{col.displayName}</th>
+                  return <th key={col._id}>{col.displayName}</th>
                 })}
               </tr>
               </thead>

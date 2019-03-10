@@ -9,7 +9,7 @@ class MultipleChoiceEditor extends Component {
   }
 
   update() {
-    this.props.updateQuestion(this.props.id, {
+    this.props.updateQuestion(this.props._id, {
       title: this.title_node.value
     });
   }
@@ -31,15 +31,15 @@ class MultipleChoiceEditor extends Component {
               {options.map((option, index) => {
                 return <OptionField
                     canRemove={index !== 0}
-                    key={option.id}
+                    key={option._id}
                     content={option.content}
-                    ref={(input) => { this.inputs[option.id] = input }}
+                    ref={(input) => { this.inputs[option._id] = input }}
                     onChange={(e) => {
                       this.props.updateQuestion(id, {
                         options: [
                           ...options.slice(0, index),
                           {
-                            id: option.id,
+                            id: option._id,
                             content: e.target.value
                           },
                           ...options.slice(index + 1)

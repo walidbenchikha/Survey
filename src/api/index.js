@@ -55,7 +55,7 @@ export const fetchSurvey = (surveyId) => {
 };
 
 export const updateSurvey = (survey) => {
-  return fetcher.put(`/api/survey/${survey.id}`, survey).then(res => res.data);
+  return fetcher.put(`/api/survey/${survey._id}`, survey).then(res => res.data);
 };
 
 export const deleteSurvey = surveyId => {};
@@ -69,5 +69,5 @@ export const saveResult = (surveyId, result) => {
 };
 
 export const deleteResults = (surveyId, results) => {
-  return Promise.all(results.map(result => fetcher.delete(`/surveys/${surveyId}/results/${result.id}`)));
+  return Promise.all(results.map(result => fetcher.delete(`/surveys/${surveyId}/results/${result._id}`)));
 };

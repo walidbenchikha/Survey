@@ -73,12 +73,12 @@ export const Path = {
       return `/user/surveys`;
     },
     viewSurvey(survey) {
-      return `/surveys/${survey.id}`;
+      return `/surveys/${survey._id}`;
     },
     survey(survey) {
-      return `/user/surveys/${survey.id}/`;
+      return `/user/surveys/${survey._id}/`;
     },
     editSurvey(survey) {
-      return `/user/surveys/${survey.id}/edit`;
+      return `/user/surveys/${survey._id}/edit`;
     }
 };

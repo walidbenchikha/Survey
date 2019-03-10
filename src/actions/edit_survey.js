@@ -96,7 +96,7 @@ export const updateSurvey = survey => dispatch => {
     dispatch({
       type: 'UPDATE_SURVEY_REQUEST_SUCCESS'
     });
-    dispatch(fetchSurvey(survey.id));
+    dispatch(fetchSurvey(survey._id));
   }).catch((err) => {
     dispatch({
       type: 'UPDATE_SURVEY_REQUEST_FAIL',

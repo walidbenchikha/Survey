@@ -12,18 +12,18 @@ class MultipleChoice extends Component {
                 <tr>
                   <td></td>
                   {options.map((option, idx) => {
-                    return <td key={option.id}>{option.content}</td>
+                    return <td key={option._id}>{option.content}</td>
                   })}
                 </tr>
               </thead>
               <tbody>
               {questions.map((question, idx) => {
-                return <tr key={question.id}>
+                return <tr key={question._id}>
                   <td>{question.content}</td>
                   {options.map((option, idx) => {
-                    return <td key={option.id}>
+                    return <td key={option._id}>
                       <label className="form-radio">
-                        <input type="radio" name={`${id}[${question.id}]`} value={option.id}/>
+                        <input type="radio" name={`${id}[${question._id}]`} value={option._id}/>
                         <i className="form-icon"></i>
                       </label>
                     </td>
