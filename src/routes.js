@@ -51,6 +51,7 @@ export default function routes(store) {
             <Route path="login" component={LoginPage}/>
             <Route path="logout" component={LogoutPage}/>
             <Route path="user/surveys" component={UserSurveysPage} />
+            <Route path="surveys/:surveyId" component={SurveyPage}/>
             <Route path="user/surveys/:surveyId/" component={UserSurveyPage}>
               <Route path="edit" component={EditSurveyPage}/>
               <Route path="data" component={SurveyDataPage}/>
