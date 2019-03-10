@@ -1,0 +1,6 @@
+export default {
+    'QUESTIONS_TAB': 'QUESTIONS_TAB',
+    'EDIT_QUESTION_TAB': 'EDIT_QUESTION_TAB',
+    'EDIT_SURVEY_TAB': 'EDIT_SURVEY_TAB'
+  };
+  

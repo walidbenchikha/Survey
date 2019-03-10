@@ -1,4 +1,5 @@
 import * as api from '../api';
+import { fetchSurveysRequest } from './surveys';
 
 export const loginRequest = (email, password) => dispatch => {
   dispatch({
@@ -16,6 +17,7 @@ export const loginRequestSuccess = (res) => (dispatch) => {
     type: 'LOGIN_REQUEST_SUCCESS',
     payload: res
   });
+  dispatch(fetchSurveysRequest(res));
 };
 
 export const loginRequestFail = (err) => ({

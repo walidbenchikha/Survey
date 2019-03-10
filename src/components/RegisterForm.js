@@ -19,7 +19,7 @@ class RegisterForm extends React.Component {
           <div className="form-group">
             <label htmlFor="">Full Name</label>
             <Field
-                name="username"
+                name="name"
                 component={renderInput}
                 form={{errors, touched}}
                 type="text"/>

@@ -21,7 +21,7 @@ class LoginForm extends React.Component {
           <div className="form-group">
             <label htmlFor="">Email</label>
             <Field
-                name="username"
+                name="name"
                 component={renderInput}
                 placeholder="admin@example.com"
                 type="text"/>

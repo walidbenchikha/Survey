@@ -1,12 +1,18 @@
 import React from 'react';
 import App from './App';
-import { Route } from 'react-router';
+import { Route, IndexRoute } from 'react-router';
 import RegisterPage from './pages/RegisterPage';
 import LoginPage from './pages/LoginPage';
 import LogoutPage from './pages/LogoutPage';
 import UserSurveysPage from './pages/UserSurveysPage';
 import { home } from './reducers/session';
 import { fetchCurrentUserRequest, fetchCurrentUserRequestSuccess, fetchCurrentUserRequestFail } from './actions/login';
+import EditSurveyPage from './pages/EditSurveyPage';
+import UserSurveyPage from './pages/UserSurveyPage';
+import SurveyDataPage from './pages/SurveyDataPage';
+import OverviewSurveyPage from './pages/OverviewSurveyPage';
+import SurveyReportPage from './pages/SurveyReportPage';
+import SurveyPage from './pages/SurveyPage';
 
 const skipAuthPaths = ['/login', '/register', '/logout'];
 
@@ -44,7 +50,13 @@ export default function routes(store) {
             <Route path="register" component={RegisterPage}/>
             <Route path="login" component={LoginPage}/>
             <Route path="logout" component={LogoutPage}/>
-            <Route path="user/surveys" component={UserSurveysPage} onEnter={requireAuth}/>
+            <Route path="user/surveys" component={UserSurveysPage} />
+            <Route path="user/surveys/:surveyId/" component={UserSurveyPage}>
+              <Route path="edit" component={EditSurveyPage}/>
+              <Route path="data" component={SurveyDataPage}/>
+              <Route path="report" component={SurveyReportPage}/>
+              <IndexRoute component={OverviewSurveyPage}/>
+            </Route>
         </Route>
     );
   }
@@ -53,11 +65,19 @@ export const Path = {
     login() {
       return `/login`;
     },
-
     logout() {
       return `/logout`;
     },
     surveyList() {
       return `/user/surveys`;
+    },
+    viewSurvey(survey) {
+      return `/surveys/${survey.id}`;
+    },
+    survey(survey) {
+      return `/user/surveys/${survey.id}/`;
+    },
+    editSurvey(survey) {
+      return `/user/surveys/${survey.id}/edit`;
     }
 };
